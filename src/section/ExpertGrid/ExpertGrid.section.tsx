@@ -1,4 +1,5 @@
-import styles from "./expertgrid.module.css";
+"use client";
+
 import React from "react";
 import ExpertCard from "@/components/ExpertCard/ExpertCard";
 import { Expert } from "@/data/experts";
@@ -9,10 +10,10 @@ interface ExpertGridProps {
 
 export default function ExpertGrid({ experts }: ExpertGridProps) {
   return (
-    <section className={styles.sectionContainer}>
-      <div className={styles.whiteCardBox}>
+    <section className="expert-grid-section">
+      <div className="expert-white-container">
         {experts.length > 0 ? (
-          <div className={styles.gridContainer}>
+          <div className="expert-grid">
             {experts.map((expert) => (
               <ExpertCard key={expert.id} expert={expert} />
             ))}
