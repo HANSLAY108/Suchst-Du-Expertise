@@ -40,13 +40,13 @@ export default function Hero({ searchQuery, setSearchQuery }: HeroProps) {
       {/* Hero Downward Arc Curve Transition */}
       <div className="hero-curve-divider">
         <svg
-          viewBox="0 0 1440 100"
+          viewBox="0 0 1440 120"
           preserveAspectRatio="none"
-          className="w-full h-20"
+          className="w-full h-24"
         >
           <path
             fill="#ffffff"
-            d="M0,0 C480,95 960,95 1440,0 L1440,100 L0,100 Z"
+            d="M 0,15 C 380,110 1060,110 1440,15 L 1440,120 L 0,120 Z"
           />
         </svg>
       </div>

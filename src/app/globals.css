@@ -2,7 +2,7 @@
 
 :root {
   --background-purple: #ffffff;
-  --hero-gradient: linear-gradient(135deg, #ff005c 0%, #e60067 20%, #b30089 55%, #6a00b0 100%);
+  --hero-gradient: linear-gradient(90deg, #ff6a00 0%, #ff005c 28%, #c4009a 65%, #6a11b0 100%);
   --foreground: #171717;
   --primary-red: #ff334b;
 }
