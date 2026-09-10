@@ -1,61 +1,80 @@
-import styles from "./header.module.css";
+"use client";
+
 import React, { useState } from "react";
-import { Search, User, Menu, X, ChevronRight } from "lucide-react";
+import { Search, User, Menu, ChevronRight } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 interface HeaderProps {
   transparent?: boolean;
 }
 
 export default function Header({ transparent = false }: HeaderProps) {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className={transparent ? styles.headerWrapperTransparent : styles.headerWrapper}>
-      <div className={styles.headerContainer}>
-        {/* Left Side: Branding and Desktop Navigation */}
-        <div className={styles.leftSection}>
-          <div className={transparent ? styles.logoTransparent : styles.logo}>Skillflash</div>
-          <nav className={styles.desktopNav}>
-            <a href="#" className={transparent ? styles.navLinkActiveTransparent : styles.navLinkActive}>Skillflash</a>
-            <a href="#" className={transparent ? styles.navLinkTransparent : styles.navLink}>Expert:innen werden</a>
-            <a href="#" className={transparent ? styles.navLinkTransparent : styles.navLink}>Enterprise</a>
+    <header className="header-wrapper">
+      <div className="header-container">
+        {/* Left Side: Logo & Desktop Navigation */}
+        <div className="header-brand-nav">
+          <a href="#" className="header-logo">
+            Skillflash
+          </a>
+          <nav className="header-nav hidden md:flex">
+            <a href="#" className="header-nav-link">
+              Expert:innen werden
+            </a>
+            <a href="#" className="header-nav-link">
+              Enterprise
+            </a>
           </nav>
         </div>
 
-        {/* Right Side: Quick Search & Profile Controls */}
-        <div className={styles.rightSection}>
-          <div className={transparent ? styles.miniSearchTransparent : styles.miniSearch}>
-            <input 
-              type="text" 
-              placeholder="Skills finden..." 
-              className={transparent ? styles.miniSearchInputTransparent : styles.miniSearchInput}
+        {/* Right Side: Quick Search & Profile Menu Toggle */}
+        <div className="header-right">
+          {/* Mini Search Bar Pill */}
+          <div className="header-mini-search">
+            <input
+              type="text"
+              placeholder="Skills finden..."
+              className="header-mini-search-input"
             />
-            <button className={styles.miniSearchBtn} aria-label="Suche">
-              <ChevronRight size={14} className="text-white" />
+            <button className="header-mini-search-btn" aria-label="Suche">
+              <ChevronRight size={14} />
             </button>
           </div>
 
-          <div className={styles.userMenuWrapper}>
-            <button 
-              className={transparent ? styles.menuToggleBtnTransparent : styles.menuToggleBtn}
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          {/* User Profile / Menu Pill Toggle */}
+          <div className="header-user-menu">
+            <button
+              className="header-menu-pill"
+              onClick={() => setMenuOpen(!menuOpen)}
               aria-label="Menü öffnen"
             >
-              <Menu size={18} className={transparent ? "text-white" : "text-gray-700"} />
-              <div className={styles.avatarIcon}>
-                <User size={16} className="text-red-500" />
+              <Menu size={16} className="text-white" />
+              <div className="header-menu-avatar">
+                <User size={14} className="text-[#ff334b]" />
               </div>
             </button>
 
-            {/* Dropdown Menu */}
-            {mobileMenuOpen && (
-              <div className={styles.dropdownMenu}>
-                <a href="#" className={styles.dropdownItemHighlight}>Registrieren</a>
-                <a href="#" className={styles.dropdownItem}>Anmelden</a>
-                <hr className={styles.dropdownDivider} />
-                <a href="#" className={styles.dropdownItem}>Expert:innen werden</a>
-                <a href="#" className={styles.dropdownItem}>Enterprise</a>
-                <a href="#" className={styles.dropdownItem}>Hilfe?</a>
+            {/* Popover Dropdown Menu */}
+            {menuOpen && (
+              <div className="header-popover-dropdown">
+                <a href="#" className="dropdown-item dropdown-item-highlight">
+                  Registrieren
+                </a>
+                <a href="#" className="dropdown-item">
+                  Anmelden
+                </a>
+                <hr className="dropdown-divider" />
+                <a href="#" className="dropdown-item">
+                  Expert:innen werden
+                </a>
+                <a href="#" className="dropdown-item">
+                  Enterprise
+                </a>
+                <a href="#" className="dropdown-item">
+                  Hilfe?
+                </a>
               </div>
             )}
           </div>
