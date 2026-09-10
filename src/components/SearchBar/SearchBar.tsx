@@ -13,7 +13,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
   return (
     <div className="hero-search-container">
       <div className="hero-search-box">
-        <Search size={22} className="text-gray-400 mr-3 shrink-0" />
+        <Search size={22} className="text-[#ff334b] mr-3 shrink-0" />
         <input
           type="text"
           value={value}
@@ -22,7 +22,7 @@ export default function SearchBar({ value, onChange }: SearchBarProps) {
           className="hero-search-input"
         />
         <Button variant="searchAction" aria-label="Suchen">
-          <ChevronRight size={22} />
+          <ChevronRight size={22} strokeWidth={2.5} />
         </Button>
       </div>
     </div>
