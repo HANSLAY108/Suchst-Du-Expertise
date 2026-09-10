@@ -1,15 +1,532 @@
 @import "tailwindcss";
 
 :root {
-  --background: #6a11b0;
+  --background-purple: #52158f;
+  --background-hero-gradient: linear-gradient(135deg, #ff1a60 0%, #db0075 35%, #7a1599 75%, #52158f 100%);
   --foreground: #171717;
+  --primary-red: #ff334b;
+  --card-bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
-  background-color: #6a11b0;
-  color: #171717;
+  background-color: var(--background-purple);
+  color: var(--foreground);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  margin: 0;
-  padding: 0;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Global Button System (.btn)
+   ========================================================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+  border-radius: 9999px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  border: 1px solid transparent;
+  outline: none;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* Button Variants */
+.btn-primary {
+  background-color: #ff334b;
+  color: #ffffff;
+}
+
+.btn-primary:hover {
+  background-color: #e6283f;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+  backdrop-filter: blur(8px);
+}
+
+.btn-secondary:hover {
+  background-color: rgba(255, 255, 255, 0.25);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+}
+
+.btn-outline:hover {
+  border-color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-ghost {
+  background-color: transparent;
+  color: #ffffff;
+}
+
+.btn-ghost:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.btn-searchAction {
+  background-color: #ff334b;
+  color: #ffffff;
+  border-radius: 8px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+}
+
+.btn-searchAction:hover {
+  background-color: #e0243b;
+}
+
+.btn-filterBtn {
+  background-color: transparent;
+  color: #ffffff;
+  border: none;
+  font-size: 0.95rem;
+  gap: 0.5rem;
+}
+
+.btn-filterBtn:hover {
+  opacity: 0.9;
+}
+
+.btn-badge {
+  background-color: #1e1548;
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  text-transform: none;
+}
+
+.btn-pill {
+  background-color: #ffffff;
+  color: #333333;
+  border: 1px solid #d0d5dd;
+  font-size: 0.75rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 9999px;
+}
+
+.btn-pill:hover {
+  border-color: #999999;
+}
+
+/* Button Sizes */
+.btn-sm {
+  padding: 0.35rem 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.btn-md {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.875rem;
+}
+
+.btn-lg {
+  padding: 0.75rem 1.75rem;
+  font-size: 1rem;
+}
+
+/* ==========================================================================
+   Header Component Styles
+   ========================================================================== */
+.header-wrapper {
+  width: 100%;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-container {
+  max-width: 1320px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-brand-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.header-logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  text-decoration: none;
+}
+
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.header-nav-link {
+  color: #ffffff;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: opacity 0.2s;
+}
+
+.header-nav-link:hover {
+  opacity: 1;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+/* Header Mini Search Input Pill */
+.header-mini-search {
+  display: flex;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 9999px;
+  padding: 0.25rem 0.25rem 0.25rem 1rem;
+}
+
+.header-mini-search-input {
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #ffffff;
+  font-size: 0.85rem;
+  width: 140px;
+}
+
+.header-mini-search-input::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.header-mini-search-btn {
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #ffffff;
+}
+
+/* Header Profile Pill Toggle & Popover Dropdown */
+.header-user-menu {
+  position: relative;
+}
+
+.header-menu-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 9999px;
+  padding: 0.35rem 0.5rem 0.35rem 0.75rem;
+  cursor: pointer;
+}
+
+.header-menu-avatar {
+  background: #ffffff;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-popover-dropdown {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  width: 220px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.2), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0;
+  z-index: 100;
+}
+
+.dropdown-item {
+  display: block;
+  padding: 0.6rem 1.25rem;
+  font-size: 0.9rem;
+  color: #333333;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background-color 0.15s;
+}
+
+.dropdown-item:hover {
+  background-color: #f5f5f7;
+}
+
+.dropdown-item-highlight {
+  color: #e6283f;
+  font-weight: 600;
+}
+
+.dropdown-divider {
+  border: none;
+  border-top: 1px solid #eeeeee;
+  margin: 0.35rem 0;
+}
+
+/* ==========================================================================
+   Hero & Search Bar Styles
+   ========================================================================== */
+.hero-wrapper {
+  background: var(--background-hero-gradient);
+  padding-top: 2rem;
+  padding-bottom: 5rem;
+  position: relative;
+}
+
+.hero-content {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 3rem 1.5rem 2rem 1.5rem;
+}
+
+.hero-title {
+  font-size: 2.75rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.hero-subtitle {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 680px;
+  margin: 0 auto 2.5rem auto;
+  line-height: 1.5;
+}
+
+/* Search Bar Box */
+.hero-search-container {
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.hero-search-box {
+  background: #ffffff;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 0.5rem 0.5rem 1.25rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.hero-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 1.05rem;
+  color: #171717;
+  padding-right: 1rem;
+}
+
+.hero-search-input::placeholder {
+  color: #888888;
+}
+
+.hero-curve-divider {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.hero-curve-divider svg {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.3px);
+  height: 60px;
+}
+
+/* ==========================================================================
+   Expert Cards Grid Section
+   ========================================================================== */
+.expert-grid-section {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem 4rem 1.5rem;
+}
+
+.expert-white-container {
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+}
+
+.expert-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 1200px) {
+  .expert-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 860px) {
+  .expert-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 580px) {
+  .expert-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Expert Card Element */
+.expert-card {
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+  border: 1px solid #eef0f4;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.expert-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+
+.expert-card-image-wrap {
+  position: relative;
+  width: 100%;
+  height: 160px;
+  background: #111;
+  overflow: hidden;
+}
+
+.expert-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.expert-card-badge {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.75rem;
+  background: rgba(15, 12, 35, 0.85);
+  backdrop-filter: blur(4px);
+  color: #ffffff;
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  letter-spacing: 0.01em;
+}
+
+.expert-card-body {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.expert-card-title {
+  font-size: 0.825rem;
+  color: #222222;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 0.5rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 2.3em;
+}
+
+.expert-card-link {
+  color: #2b6cb0;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.expert-card-link:hover {
+  text-decoration: underline;
+}
+
+.expert-card-footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
+}
+
+.expert-tags-container {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+}
+
+.expert-tag-pill {
+  background: #ffffff;
+  border: 1px solid #d0d4dc;
+  color: #333333;
+  font-size: 0.7rem;
+  font-weight: 500;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+}
+
+.expert-duration-tag {
+  color: #444444;
+  font-size: 0.7rem;
+  font-weight: 500;
 }
