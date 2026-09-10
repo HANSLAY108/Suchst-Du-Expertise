@@ -24,12 +24,12 @@ export default function Hero({ searchQuery, setSearchQuery }: HeroProps) {
         </p>
 
         {/* Search Bar */}
-        <div className="mb-6">
+        <div>
           <SearchBar value={searchQuery} onChange={setSearchQuery} />
         </div>
 
         {/* Filter Toggle */}
-        <div className="flex justify-center">
+        <div className="flex justify-center mt-[10px]">
           <Button variant="filterBtn">
             <span>Suche konfigurieren</span>
             <span className="text-white text-xs ml-1">∇</span>
