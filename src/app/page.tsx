@@ -20,7 +20,7 @@ export default function HomePage() {
   });
 
   return (
-    <main className="min-h-screen bg-[#6a11b0] flex flex-col">
+    <main className="min-h-screen bg-white flex flex-col">
       {/* Hero Banner Section with Integrated Top Header */}
       <div className="relative w-full">
         <div className="absolute top-0 left-0 right-0 z-50">

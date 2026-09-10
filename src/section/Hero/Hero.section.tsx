@@ -3,7 +3,6 @@
 import React from "react";
 import SearchBar from "@/components/SearchBar/SearchBar";
 import Button from "@/components/ui/Button";
-import { ChevronDown } from "lucide-react";
 
 interface HeroProps {
   searchQuery: string;
@@ -33,21 +32,21 @@ export default function Hero({ searchQuery, setSearchQuery }: HeroProps) {
         <div className="flex justify-center">
           <Button variant="filterBtn">
             <span>Suche konfigurieren</span>
-            <ChevronDown size={18} className="text-white ml-1" />
+            <span className="text-white text-xs ml-1">∇</span>
           </Button>
         </div>
       </div>
 
-      {/* Curved SVG Divider Transition */}
+      {/* Hero Downward Arc Curve Transition */}
       <div className="hero-curve-divider">
         <svg
-          viewBox="0 0 1440 120"
+          viewBox="0 0 1440 100"
           preserveAspectRatio="none"
-          className="w-full h-16"
+          className="w-full h-20"
         >
           <path
             fill="#ffffff"
-            d="M0,32L80,42.7C160,53,320,75,480,80C640,85,800,75,960,58.7C1120,43,1280,21,1360,10.7L1440,0L1440,120L1360,120C1280,120,1120,120,960,120C800,120,640,120,480,120C320,120,160,120,80,120L0,120Z"
+            d="M0,0 C480,95 960,95 1440,0 L1440,100 L0,100 Z"
           />
         </svg>
       </div>
