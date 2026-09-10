@@ -1,6 +1,8 @@
-import styles from "./searchbar.module.css";
+"use client";
+
 import React from "react";
 import { Search, ChevronRight } from "lucide-react";
+import Button from "@/components/ui/Button";
 
 interface SearchBarProps {
   value: string;
@@ -9,19 +11,19 @@ interface SearchBarProps {
 
 export default function SearchBar({ value, onChange }: SearchBarProps) {
   return (
-    <div className={styles.searchWrapper}>
-      <div className={styles.inputBox}>
-        <Search className={styles.searchIcon} size={20} />
+    <div className="hero-search-container">
+      <div className="hero-search-box">
+        <Search size={22} className="text-gray-400 mr-3 shrink-0" />
         <input
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
           placeholder="Skills für den Erfolg finden.."
-          className={styles.inputField}
+          className="hero-search-input"
         />
-        <button className={styles.actionBtn} aria-label="Suchen">
-          <ChevronRight size={20} className="text-white" />
-        </button>
+        <Button variant="searchAction" aria-label="Suchen">
+          <ChevronRight size={22} />
+        </Button>
       </div>
     </div>
   );
